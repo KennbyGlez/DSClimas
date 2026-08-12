@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "749809337898",
+    "project_id": "dsclimasyrefrigeracion-dfd60",
+    "storage_bucket": "dsclimasyrefrigeracion-dfd60.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:749809337898:android:cc55349975caaa2f78e553",
+        "android_client_info": {
+          "package_name": "com.example.gestion_ds_climas"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhNq20r4iB02F_FYaTQkHSFRyIcc4N-bA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
