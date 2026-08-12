@@ -2,6 +2,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'firebase_options.dart';
+import 'screens/login_screen.dart';
+import 'screens/home_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,17 +23,13 @@ class DSClimasApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'DS Climas',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('DS Climas'),
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.blue,
         ),
-        body: const Center(
-          child: Text(
-            'Firebase conectado correctamente',
-            style: TextStyle(fontSize: 20),
-          ),
-        ),
+        useMaterial3: true,
       ),
+      home: const HomeScreen(),
     );
   }
 }
