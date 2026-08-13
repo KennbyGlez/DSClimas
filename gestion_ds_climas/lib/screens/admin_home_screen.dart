@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'home_screen.dart';
+import 'clientes_screen.dart';
 
 class AdminHomeScreen extends StatelessWidget {
   const AdminHomeScreen({super.key});
@@ -229,12 +230,18 @@ class AdminHomeScreen extends StatelessWidget {
                       childAspectRatio: 1.15,
                       children: [
                         _ManagementCard(
-                          icon: Icons.people_outline,
-                          title: 'Clientes',
-                          description:
-                              'Administrar clientes',
-                          onTap: () {},
-                        ),
+  icon: Icons.people_outline,
+  title: 'Clientes',
+  description: 'Administrar clientes',
+  onTap: () {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => const ClientesScreen(),
+      ),
+    );
+  },
+),
 
                         _ManagementCard(
                           icon: Icons.ac_unit,
