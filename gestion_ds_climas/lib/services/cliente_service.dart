@@ -20,19 +20,19 @@ class ClienteService {
 }) {
   final usuario = FirebaseAuth.instance.currentUser;
 
-  print('====================================');
+/*   print('====================================');
   print('PRUEBA FIREBASE');
   print('Email: ${usuario?.email}');
   print('UID: ${usuario?.uid}');
-  print('====================================');
+  print('===================================='); */
 
   return _clientes.snapshots().map(
     (snapshot) {
-      print('CLIENTES ENCONTRADOS: ${snapshot.docs.length}');
+      //print('CLIENTES ENCONTRADOS: ${snapshot.docs.length}');
 
       for (final doc in snapshot.docs) {
-        print('ID: ${doc.id}');
-        print('DATOS: ${doc.data()}');
+       // print('ID: ${doc.id}');
+       // print('DATOS: ${doc.data()}');
       }
 
       return snapshot.docs.map(

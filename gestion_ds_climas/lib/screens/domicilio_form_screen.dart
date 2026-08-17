@@ -37,6 +37,7 @@ class _DomicilioFormScreenState
   final _referenciasController = TextEditingController();
   final _contactoController = TextEditingController();
   final _telefonoController = TextEditingController();
+  final _nombreController = TextEditingController();
 
   String _tipo = 'Servicio';
   bool _guardando = false;
@@ -51,6 +52,7 @@ class _DomicilioFormScreenState
       _tipo = domicilio.tipo;
 
       _calleController.text = domicilio.calle;
+      _nombreController.text = domicilio.nombre;
       _numeroExteriorController.text =
           domicilio.numeroExterior;
       _numeroInteriorController.text =
@@ -75,6 +77,7 @@ class _DomicilioFormScreenState
   @override
   void dispose() {
     _calleController.dispose();
+    _nombreController.dispose();
     _numeroExteriorController.dispose();
     _numeroInteriorController.dispose();
     _coloniaController.dispose();
@@ -110,6 +113,7 @@ class _DomicilioFormScreenState
           domicilioId: widget.domicilio!.id,
           tipo: _tipo,
           calle: _calleController.text.trim(),
+          nombre: _nombreController.text.trim(),
           numeroExterior:
               _numeroExteriorController.text.trim(),
           numeroInterior:
@@ -130,6 +134,7 @@ class _DomicilioFormScreenState
           clienteId: widget.clienteId,
           tipo: _tipo,
           calle: _calleController.text.trim(),
+          nombre: _nombreController.text.trim(),
           numeroExterior:
               _numeroExteriorController.text.trim(),
           numeroInterior:
@@ -291,6 +296,18 @@ class _DomicilioFormScreenState
                                   });
                                 }
                               },
+                            ),
+
+                            const SizedBox(height: 18),
+
+                             _Campo(
+                              controller:
+                                  _nombreController,
+                              label: 'Nombre',
+                              hint: 'Ej. Hotel X',
+                              icon: Icons
+                                  .signpost_outlined,
+                              obligatorio: true,
                             ),
 
                             const SizedBox(height: 18),

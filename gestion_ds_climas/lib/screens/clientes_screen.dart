@@ -1345,7 +1345,7 @@ class _DomicilioCard extends StatelessWidget {
                   children: [
                     Expanded(
                       child: Text(
-                        domicilio.tipo,
+                        domicilio.nombre,
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 15,

@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Domicilio {
   final String id;
+  final String nombre;
   final String tipo;
   final String calle;
   final String numeroExterior;
@@ -19,6 +20,7 @@ class Domicilio {
 
   Domicilio({
     required this.id,
+    required this.nombre,
     required this.tipo,
     required this.calle,
     required this.numeroExterior,
@@ -42,6 +44,7 @@ class Domicilio {
     return Domicilio(
       id: id,
       tipo: data['tipo'] ?? '',
+      nombre: data['nombre'] ?? '',
       calle: data['calle'] ?? '',
       numeroExterior: data['numeroExterior'] ?? '',
       numeroInterior: data['numeroInterior'] ?? '',
@@ -62,6 +65,7 @@ class Domicilio {
     return {
       'tipo': tipo,
       'calle': calle,
+      'nombre': nombre,
       'numeroExterior': numeroExterior,
       'numeroInterior': numeroInterior,
       'colonia': colonia,

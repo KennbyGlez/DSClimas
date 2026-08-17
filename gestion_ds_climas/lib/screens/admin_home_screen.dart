@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'home_screen.dart';
 import 'clientes_screen.dart';
+import 'servicios_screen.dart';
 
 class AdminHomeScreen extends StatelessWidget {
   const AdminHomeScreen({super.key});
@@ -25,106 +26,89 @@ class AdminHomeScreen extends StatelessWidget {
                 color: const Color(0xFFE3F2FD),
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: const Icon(
-                Icons.ac_unit,
-                color: Color(0xFF1976D2),
-              ),
+              child: const Icon(Icons.ac_unit, color: Color(0xFF1976D2)),
             ),
 
             const SizedBox(width: 12),
 
             const Text(
               'DS Climas',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontWeight: FontWeight.bold),
             ),
           ],
         ),
 
-       actions: [
-  IconButton(
-    tooltip: 'Notificaciones',
-    onPressed: () {},
-    icon: const Icon(
-      Icons.notifications_none_rounded,
-    ),
-  ),
-
-  const SizedBox(width: 8),
-
-  Padding(
-    padding: const EdgeInsets.only(right: 16),
-    child: PopupMenuButton<String>(
-      tooltip: 'Cuenta',
-      offset: const Offset(0, 55),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
-      ),
-      onSelected: (value) async {
-        if (value == 'logout') {
-          await _logout(context);
-        }
-      },
-      itemBuilder: (context) => [
-        const PopupMenuItem<String>(
-          value: 'profile',
-          enabled: false,
-          child: Row(
-            children: [
-              CircleAvatar(
-                backgroundColor: Color(0xFFE3F2FD),
-                child: Icon(
-                  Icons.person_outline,
-                  color: Color(0xFF1976D2),
-                ),
-              ),
-
-              SizedBox(width: 12),
-
-              Text(
-                'Administrador',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
+        actions: [
+          IconButton(
+            tooltip: 'Notificaciones',
+            onPressed: () {},
+            icon: const Icon(Icons.notifications_none_rounded),
           ),
-        ),
 
-        const PopupMenuDivider(),
+          const SizedBox(width: 8),
 
-        const PopupMenuItem<String>(
-          value: 'logout',
-          child: Row(
-            children: [
-              Icon(
-                Icons.logout_rounded,
-                color: Colors.red,
+          Padding(
+            padding: const EdgeInsets.only(right: 16),
+            child: PopupMenuButton<String>(
+              tooltip: 'Cuenta',
+              offset: const Offset(0, 55),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16),
               ),
+              onSelected: (value) async {
+                if (value == 'logout') {
+                  await _logout(context);
+                }
+              },
+              itemBuilder: (context) => [
+                const PopupMenuItem<String>(
+                  value: 'profile',
+                  enabled: false,
+                  child: Row(
+                    children: [
+                      CircleAvatar(
+                        backgroundColor: Color(0xFFE3F2FD),
+                        child: Icon(
+                          Icons.person_outline,
+                          color: Color(0xFF1976D2),
+                        ),
+                      ),
 
-              SizedBox(width: 12),
+                      SizedBox(width: 12),
 
-              Text(
-                'Cerrar sesión',
-                style: TextStyle(
-                  color: Colors.red,
+                      Text(
+                        'Administrador',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
                 ),
+
+                const PopupMenuDivider(),
+
+                const PopupMenuItem<String>(
+                  value: 'logout',
+                  child: Row(
+                    children: [
+                      Icon(Icons.logout_rounded, color: Colors.red),
+
+                      SizedBox(width: 12),
+
+                      Text(
+                        'Cerrar sesión',
+                        style: TextStyle(color: Colors.red),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+              child: const CircleAvatar(
+                backgroundColor: Color(0xFF1976D2),
+                child: Icon(Icons.person_outline, color: Colors.white),
               ),
-            ],
+            ),
           ),
-        ),
-      ],
-      child: const CircleAvatar(
-        backgroundColor: Color(0xFF1976D2),
-        child: Icon(
-          Icons.person_outline,
-          color: Colors.white,
-        ),
-      ),
-    ),
-  ),
-],
+        ],
       ),
 
       body: LayoutBuilder(
@@ -138,13 +122,10 @@ class AdminHomeScreen extends StatelessWidget {
             ),
             child: Center(
               child: ConstrainedBox(
-                constraints: const BoxConstraints(
-                  maxWidth: 1400,
-                ),
+                constraints: const BoxConstraints(maxWidth: 1400),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-
                     // ENCABEZADO
                     const Text(
                       'Panel principal',
@@ -171,8 +152,7 @@ class AdminHomeScreen extends StatelessWidget {
                     GridView.count(
                       crossAxisCount: isDesktop ? 4 : 2,
                       shrinkWrap: true,
-                      physics:
-                          const NeverScrollableScrollPhysics(),
+                      physics: const NeverScrollableScrollPhysics(),
                       crossAxisSpacing: 16,
                       mainAxisSpacing: 16,
                       childAspectRatio: 1.8,
@@ -223,79 +203,78 @@ class AdminHomeScreen extends StatelessWidget {
                     GridView.count(
                       crossAxisCount: isDesktop ? 4 : 2,
                       shrinkWrap: true,
-                      physics:
-                          const NeverScrollableScrollPhysics(),
+                      physics: const NeverScrollableScrollPhysics(),
                       crossAxisSpacing: 16,
                       mainAxisSpacing: 16,
                       childAspectRatio: 1.15,
                       children: [
                         _ManagementCard(
-  icon: Icons.people_outline,
-  title: 'Clientes',
-  description: 'Administrar clientes',
-  onTap: () {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (_) => const ClientesScreen(),
-      ),
-    );
-  },
-),
+                          icon: Icons.people_outline,
+                          title: 'Clientes',
+                          description: 'Administrar clientes',
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => const ClientesScreen(),
+                              ),
+                            );
+                          },
+                        ),
 
                         _ManagementCard(
                           icon: Icons.ac_unit,
                           title: 'Equipos',
-                          description:
-                              'Gestionar equipos',
+                          description: 'Gestionar equipos',
                           onTap: () {},
                         ),
 
                         _ManagementCard(
                           icon: Icons.assignment_outlined,
                           title: 'Servicios',
-                          description:
-                              'Control de servicios',
-                          onTap: () {},
+                          description: 'Control de servicios',
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => const ServiciosScreen(),
+                              ),
+                            );
+                          },
                         ),
 
                         _ManagementCard(
                           icon: Icons.engineering_outlined,
                           title: 'Técnicos',
-                          description:
-                              'Administrar técnicos',
+                          description: 'Administrar técnicos',
                           onTap: () {},
                         ),
 
                         _ManagementCard(
                           icon: Icons.description_outlined,
                           title: 'Reportes',
-                          description:
-                              'Consultar reportes',
+                          description: 'Consultar reportes',
                           onTap: () {},
                         ),
 
                         _ManagementCard(
                           icon: Icons.calendar_month_outlined,
                           title: 'Agenda',
-                          description:
-                              'Programar servicios',
+                          description: 'Programar servicios',
                           onTap: () {},
                         ),
 
                         _ManagementCard(
                           icon: Icons.inventory_2_outlined,
                           title: 'Inventario',
-                          description:
-                              'Material y refacciones',
+                          description: 'Material y refacciones',
                           onTap: () {},
                         ),
 
                         _ManagementCard(
                           icon: Icons.settings_outlined,
                           title: 'Configuración',
-                          description:
-                              'Configuración del sistema',
+                          description: 'Configuración del sistema',
                           onTap: () {},
                         ),
                       ],
@@ -321,9 +300,7 @@ class AdminHomeScreen extends StatelessWidget {
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(18),
-                        border: Border.all(
-                          color: const Color(0xFFE5EAF0),
-                        ),
+                        border: Border.all(color: const Color(0xFFE5EAF0)),
                       ),
                       child: Column(
                         children: [
@@ -377,9 +354,7 @@ class _SummaryCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(18),
-        border: Border.all(
-          color: const Color(0xFFE5EAF0),
-        ),
+        border: Border.all(color: const Color(0xFFE5EAF0)),
       ),
       child: Row(
         children: [
@@ -390,10 +365,7 @@ class _SummaryCard extends StatelessWidget {
               color: const Color(0xFFE3F2FD),
               borderRadius: BorderRadius.circular(14),
             ),
-            child: Icon(
-              icon,
-              color: const Color(0xFF1976D2),
-            ),
+            child: Icon(icon, color: const Color(0xFF1976D2)),
           ),
 
           const SizedBox(width: 14),
@@ -401,15 +373,11 @@ class _SummaryCard extends StatelessWidget {
           Expanded(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment:
-                  CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   title,
-                  style: TextStyle(
-                    fontSize: 13,
-                    color: Colors.grey.shade600,
-                  ),
+                  style: TextStyle(fontSize: 13, color: Colors.grey.shade600),
                 ),
 
                 const SizedBox(height: 3),
@@ -425,10 +393,7 @@ class _SummaryCard extends StatelessWidget {
 
                 Text(
                   subtitle,
-                  style: TextStyle(
-                    fontSize: 11,
-                    color: Colors.grey.shade500,
-                  ),
+                  style: TextStyle(fontSize: 11, color: Colors.grey.shade500),
                 ),
               ],
             ),
@@ -463,22 +428,16 @@ class _ManagementCard extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(20),
           child: Column(
-            crossAxisAlignment:
-                CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
                 width: 50,
                 height: 50,
                 decoration: BoxDecoration(
                   color: const Color(0xFFE3F2FD),
-                  borderRadius:
-                      BorderRadius.circular(14),
+                  borderRadius: BorderRadius.circular(14),
                 ),
-                child: Icon(
-                  icon,
-                  color: const Color(0xFF1976D2),
-                  size: 27,
-                ),
+                child: Icon(icon, color: const Color(0xFF1976D2), size: 27),
               ),
 
               const Spacer(),
@@ -496,10 +455,7 @@ class _ManagementCard extends StatelessWidget {
 
               Text(
                 description,
-                style: TextStyle(
-                  fontSize: 12,
-                  color: Colors.grey.shade600,
-                ),
+                style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
               ),
             ],
           ),
@@ -516,9 +472,7 @@ Future<void> _logout(BuildContext context) async {
 
   Navigator.pushAndRemoveUntil(
     context,
-    MaterialPageRoute(
-      builder: (_) => const HomeScreen(),
-    ),
+    MaterialPageRoute(builder: (_) => const HomeScreen()),
     (route) => false,
   );
 }

@@ -63,6 +63,7 @@ class DomicilioService {
   Future<String> crearDomicilio({
     required String clienteId,
     required String tipo,
+    required String nombre,
     required String calle,
     required String numeroExterior,
     required String numeroInterior,
@@ -79,6 +80,7 @@ class DomicilioService {
     final referencia =
         await _domicilios(clienteId).add({
       'tipo': tipo,
+      'nombre': nombre,
       'calle': calle,
       'numeroExterior': numeroExterior,
       'numeroInterior': numeroInterior,
@@ -105,6 +107,7 @@ class DomicilioService {
     required String clienteId,
     required String domicilioId,
     required String tipo,
+    required String nombre,
     required String calle,
     required String numeroExterior,
     required String numeroInterior,
@@ -120,6 +123,7 @@ class DomicilioService {
         .doc(domicilioId)
         .update({
       'tipo': tipo,
+      'nombre': nombre,
       'calle': calle,
       'numeroExterior': numeroExterior,
       'numeroInterior': numeroInterior,
