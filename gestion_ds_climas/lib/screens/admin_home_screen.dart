@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'home_screen.dart';
 import 'clientes_screen.dart';
 import 'servicios_screen.dart';
+import 'inventario_screen.dart';
 
 class AdminHomeScreen extends StatelessWidget {
   const AdminHomeScreen({super.key});
@@ -268,7 +269,14 @@ class AdminHomeScreen extends StatelessWidget {
                           icon: Icons.inventory_2_outlined,
                           title: 'Inventario',
                           description: 'Material y refacciones',
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => const InventarioScreen(),
+                              ),
+                            );
+                          },
                         ),
 
                         _ManagementCard(
